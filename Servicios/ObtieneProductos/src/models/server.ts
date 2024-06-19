@@ -22,7 +22,7 @@ class Server {
             if(err){
                 console.log(err)
             }else{
-                console.log("CONEXION EXITOSA A BD");
+                console.log("EXITO")
             }
         });
     }
