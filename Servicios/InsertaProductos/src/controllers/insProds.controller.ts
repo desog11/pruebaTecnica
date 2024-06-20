@@ -2,7 +2,7 @@ import {Request,Response} from 'express'
 import connection from '../db/connection'
 
 export const insProds = (req:Request,res:Response)=>{
-    connection.query('CALL sp_maneja_eventos(\'IPS\', ?, ?,?, NULL, NULL, NULL, NULL, NULL, NULL, NULL,?);',[req.body.nombre, req.body.descripcion,req.body.precio,req.body.tipo]
+    connection.query('CALL sp_maneja_eventos(\'IPS\', ?, ?,?, NULL, NULL, NULL, NULL, NULL, NULL, NULL,?,NULL);',[req.body.nombre, req.body.descripcion,req.body.precio,req.body.tipo]
         ,(err,data)=>{
         if(err){
             console.log(err)
@@ -17,6 +17,7 @@ export const insProds = (req:Request,res:Response)=>{
                 mensaje = 'SEVICIO INSERTADO CON ÉXITO'
             }
             res.status(200).json({
+                codigo: 0,
                 mensaje
             })
         }

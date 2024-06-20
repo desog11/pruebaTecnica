@@ -2,6 +2,7 @@ import express, {Application} from "express";
 import connection from "../db/connection";
 import router from "../routes/insProds.routes";
 import bodyParser from "body-parser"
+import cors from "cors";
 class Server {
 
     private app : Application
@@ -32,6 +33,7 @@ class Server {
     }
 
     routes(){
+        this.app.use(cors())
         this.app.use('/api/insertaProds',router)
     }
 
