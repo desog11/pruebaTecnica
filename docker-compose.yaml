@@ -5,7 +5,10 @@ services:
     container_name: frontend
     ports:
       - '8080:8080'
-    network_mode: "bridge"
+    depends_on:
+      - 'backend-obtiene-productos'
+      - 'backend-inserta-suarios'
+    network_mode: 'bridge'
   backend-obtiene-productos:
     build: ./Servicios/ObtieneProductos/
     container_name: obtieneProductos
@@ -20,7 +23,7 @@ services:
       - SQLDATABASE
     stdin_open: true
     tty: true
-    network_mode: "bridge"
+    network_mode: 'bridge'
   backend-inserta-suarios:
     build: ./Servicios/InsertaUsuarios/
     container_name: insertaUsuarios
@@ -35,4 +38,4 @@ services:
       - SQLDATABASE
     stdin_open: true
     tty: true
-    network_mode: "bridge"
+    network_mode: 'bridge'
