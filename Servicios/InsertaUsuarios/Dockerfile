@@ -6,5 +6,7 @@ RUN npm install
 
 COPY . .
 
+RUN tsc
+
 EXPOSE 3004
 CMD ["node", "dist/index.js"]
