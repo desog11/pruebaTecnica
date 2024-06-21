@@ -11,7 +11,7 @@ services:
     ports:
       - '3001:3001'
     environment:
-      - PORT_LISTPRODUCTOS
+      - PORT=${PORT_LISTPRODUCTOS}
       - SQLPORT
       - SQLUSERNAME
       - SQLHOST
@@ -26,7 +26,7 @@ services:
     ports:
       - '3004:3004'
     environment:
-      - PORT_LISTPRODUCTOS
+      - PORT=${PORT_LISTPRODUCTOS}
       - SQLPORT
       - SQLUSERNAME
       - SQLHOST
