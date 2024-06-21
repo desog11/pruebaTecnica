@@ -12,6 +12,7 @@ services:
       - '3001:3001'
     stdin_open: true
     tty: true
+    network_mode: "host"
   backend-inserta-suarios:
     build: ./Servicios/InsertaUsuarios/
     container_name: insertaUsuarios
@@ -19,4 +20,4 @@ services:
       - '3004:3004'
     stdin_open: true
     tty: true
-  network_mode: host
+    network_mode: "host"
