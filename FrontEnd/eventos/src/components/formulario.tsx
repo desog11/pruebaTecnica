@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
+
 import React, { useState } from "react";
 
 const Formulario = () =>{
@@ -23,34 +23,30 @@ const clearForm = () => {
   }
 
   const guardarDatos = async () =>{
-  const client = axios.create({
-  baseURL: 'http://localhost:3004',
-});
+  
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({'nombre': nombre,
+            'apellido': apellido,
+            'correo_electronico': email,
+            'fecha': fechaHora})
+    }
 
-    const config: AxiosRequestConfig = {
-        headers: {
-            'Accept': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        } as RawAxiosRequestHeaders
-    };
     if(verificaDatos()){
 
     
     try {
-        const data = {
-            'nombre': nombre,
-            'apellido': apellido,
-            'correo_electronico': email,
-            'fecha': fechaHora
-        }
-        const response: AxiosResponse = await client.post(`/api/usuarios`,data,config);
-        console.log(response.status)
-        console.log(response.data.json);
-        if(response.status==200){
+        
+        fetch('http://localhost:3004/api/usuarios', requestOptions)
+        .then(response => {
+            if(response.status==200){
             alert("Datos Guardados");
         }else{
             alert("Ocurrió un error al guardar los datos, intente más tarde");
-        }
+        }});
+
+        
         
     } catch (error) {
         console.log(error);
