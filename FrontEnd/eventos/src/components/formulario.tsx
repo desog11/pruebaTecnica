@@ -120,14 +120,12 @@ const handleSubmit = (e:React.SyntheticEvent<HTMLFormElement>) => {
            
          </div> 
          
-         <button type="submit" > 
-           Create account 
+         <button type="submit" className="buttonEnviar" > 
+            Confirma asistencia
          </button> 
        </fieldset> 
 
-       <button className="buttonEnviar">
-        confirma asistencia
-      </button>
+      
      </form> 
     )
 }
