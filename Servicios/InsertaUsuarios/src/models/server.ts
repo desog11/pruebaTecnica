@@ -32,8 +32,15 @@ class Server {
         });
     }
 
+    
+
     routes(){
-        this.app.use(cors())
+        const corsOptions = {
+            credentials: true,
+            origin: ['http://34.125.179.240:8080','http://localhost:3001'] // Whitelist the domains you want to allow
+        };
+
+        this.app.use(cors(corsOptions))
         this.app.use('/api/usuarios',router)
     }
 
