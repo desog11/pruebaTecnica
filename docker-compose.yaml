@@ -5,17 +5,11 @@ services:
     container_name: frontend
     ports:
       - '8080:8080'
-    networks:
-      - internal
-      - external
   backend-obtiene-productos:
     build: ./Servicios/ObtieneProductos/
     container_name: obtieneProductos
     ports:
       - '3001:3001'
-    networks:
-      - internal
-      - external
     stdin_open: true
     tty: true
   backend-inserta-suarios:
@@ -23,14 +17,6 @@ services:
     container_name: insertaUsuarios
     ports:
       - '3004:3004'
-    networks:
-      - internal
-      - external
     stdin_open: true
     tty: true
-
-networks:
-  internal:
-    driver: bridge
-  external:
-    driver: host
+  network_mode: host
