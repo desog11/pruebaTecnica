@@ -44,4 +44,4 @@ services:
       - net-app
 networks:
   net-app:
-    driver: bridge
+    driver: host
