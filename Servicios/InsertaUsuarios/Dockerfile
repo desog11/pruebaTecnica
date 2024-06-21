@@ -6,9 +6,9 @@ COPY package.json /usr/src/app/
 RUN npm install\
 && npm install typescript -g
 
-COPY . /usr/src/app
-
 RUN tsc
+COPY . .
+
 
 
 
