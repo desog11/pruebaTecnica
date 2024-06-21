@@ -6,9 +6,10 @@ services:
     ports:
       - '8080:8080'
     depends_on:
-      - 'backend-obtiene-productos'
-      - 'backend-inserta-suarios'
-    network_mode: 'host'
+      - backend-obtiene-productos
+      - backend-inserta-suarios
+    networks:
+      - net-app
   backend-obtiene-productos:
     build: ./Servicios/ObtieneProductos/
     container_name: obtieneProductos
@@ -23,7 +24,8 @@ services:
       - SQLDATABASE
     stdin_open: true
     tty: true
-    network_mode: 'host'
+    networks:
+      - net-app
   backend-inserta-suarios:
     build: ./Servicios/InsertaUsuarios/
     container_name: insertaUsuarios
@@ -38,4 +40,8 @@ services:
       - SQLDATABASE
     stdin_open: true
     tty: true
-    network_mode: 'host'
+    networks:
+      - net-app
+networks:
+  net-app:
+    driver: bridge
