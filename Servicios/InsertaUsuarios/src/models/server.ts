@@ -33,7 +33,10 @@ class Server {
     }
 
     routes(){
-        this.app.use(cors())
+        this.app.use(cors({
+            origin: ["http://34.125.179.240:8080/", "http://localhost:8080/", "http://192.168.64.2:8080/","http://0.0.0.0:8080/"],
+            methods: ["GET","POST"]
+        }))
         this.app.use('/api/usuarios',router)
     }
 
