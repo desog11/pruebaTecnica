@@ -10,6 +10,13 @@ services:
     container_name: obtieneProductos
     ports:
       - '3001:3001'
+    environment:
+      - PORT_LISTPRODUCTOS
+      - SQLPORT
+      - SQLUSERNAME
+      - SQLHOST
+      - SQLPASS
+      - SQLDATABASE
     stdin_open: true
     tty: true
     network_mode: "host"
@@ -18,6 +25,13 @@ services:
     container_name: insertaUsuarios
     ports:
       - '3004:3004'
+    environment:
+      - PORT_LISTPRODUCTOS
+      - SQLPORT
+      - SQLUSERNAME
+      - SQLHOST
+      - SQLPASS
+      - SQLDATABASE
     stdin_open: true
     tty: true
     network_mode: "host"
