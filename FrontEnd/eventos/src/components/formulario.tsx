@@ -38,7 +38,7 @@ const clearForm = () => {
     
     try {
         
-        fetch('http://localhost:3004/api/usuarios', requestOptions)
+        fetch('http://127.0.0.1:3004/api/usuarios', requestOptions)
         .then(response => {
             if(response.status==200){
             alert("Datos Guardados");
