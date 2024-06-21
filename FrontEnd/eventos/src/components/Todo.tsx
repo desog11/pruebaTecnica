@@ -47,7 +47,7 @@ export const Todo: React.FC <Props> = ({nombre,precio,id}) => {
 
             
         <input
-            className="option1"
+            className="checkmark"
             type="checkbox"
             value={precio}
             name = {id.toString()}
