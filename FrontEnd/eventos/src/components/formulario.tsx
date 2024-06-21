@@ -38,7 +38,7 @@ const clearForm = () => {
     
     try {
         
-        fetch('http://backend-inserta-suarios:3004/api/usuarios', requestOptions)
+        fetch('http://34.125.179.240:3004/api/usuarios', requestOptions)
         .then(response => {
             if(response.status==200){
             alert("Datos Guardados");

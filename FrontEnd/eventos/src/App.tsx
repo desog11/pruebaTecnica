@@ -10,7 +10,7 @@ const App = (): JSX.Element => {
   const [todos,setTodos] = useState<Productos>();
   const [filteredtodos,setFilteredTodos] = useState<Productos>();
   useEffect(() => {
-    axios.get<Productos>("http://backend-obtiene-productos:3001/api/productos").then((response) => {setTodos(response.data); setFilteredTodos(response.data)})
+    axios.get<Productos>("http://34.125.179.240:3001/api/productos").then((response) => {setTodos(response.data); setFilteredTodos(response.data)})
     
   },[]);
   
