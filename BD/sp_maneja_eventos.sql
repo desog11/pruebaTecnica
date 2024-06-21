@@ -8,52 +8,46 @@ pOperacion			CHAR(3),
 pNombre 			VARCHAR(255),
 pDescripcion 		TEXT,
 pPrecio				DECIMAL(10,2),
-pFecha				DATE,
+pFecha				DATETIME,
 pHora				TIME,
 pUbicacion			VARCHAR(255),
 pCorreoElectronico	VARCHAR(255),
 pContrasena			VARCHAR(255),
 pUsuario			INT,
-pServicio			INT
+pServicioProducto		INT,
+pTipo				INT,
+pApellido			VARCHAR(255)
 )
 BEGIN
-  IF pOperacion = "ISN" THEN  -- INSERTA SERVICIOS NUEVOS
-    INSERT INTO servicios (nombre, descripcion, precio)
-    VALUES (pNombre, pDescripcion, pPrecio);
-  END IF;
   IF pOperacion = "IEN" THEN  -- INSERTA EVENTOS NUEVOS
     INSERT INTO eventos (nombre, fecha, hora, ubicacion)
   VALUES (pNombre, pFecha, pHora, pUbicacion);
   END IF;
   IF pOperacion = "IUS" THEN  -- INSERTA USUARIOS NUEVOS
-    INSERT INTO usuarios (nombre, correo_electronico, contrasena)
-  VALUES (pNombre, pCorreoElectronico, pContrasena);
+    INSERT INTO usuarios (nombre, apellido, correo_electronico, fecha_registro)
+  VALUES (pNombre,pApellido, pCorreoElectronico, pFecha);
   END IF;
-  IF pOperacion = "IPN" THEN  -- INSERTA PRODUCTOS NUEVOS
-    INSERT INTO productos (nombre, descripcion, precio)
-  VALUES (pNombre, pDescripcion, pPrecio);
+  IF pOperacion = "IPS" THEN  -- INSERTA PRODUCTOS SERVICIOS NUEVOS
+    INSERT INTO productos_servicios (nombre, descripcion, precio,tipo) -- 1 producto 2 servicio
+  VALUES (pNombre, pDescripcion, pPrecio,pTipo);
   END IF;
   
   IF pOperacion = "IIN" THEN  -- INSERTA INTERESES NUEVOS
-    INSERT INTO intereses (id_usuario, id_servicio)
-  VALUES (pIdUsuario, pIdServicio);
+    INSERT INTO intereses (id_usuario, id_producto_servicio,total)
+  VALUES (pIdUsuario, pServicioProducto,pPrecio);
   END IF;
   
   IF pOperacion = "OI" THEN  -- OBTIENE INTERESES
     SELECT s.nombre, s.descripcion, s.precio
-	  FROM servicios s, intereses i
-	  WHERE i.id_servicio = s.id
+	  FROM productos_servicios s, intereses i
+	  WHERE i.id_producto_servicio = s.id
 	  AND i.id_usuario = pIdUsuario;
   END IF;
   
-  IF pOperacion = "OS" THEN  -- OBTIENE SERVICIOS
-    SELECT id, nombre, descripcion, precio
-		FROM servicios;
-  END IF;
   
-  IF pOperacion = "OP" THEN  -- OBTIENE PRODUCTOS
-    SELECT id, nombre, descripcion, precio
-		FROM productos;
+  IF pOperacion = "OPS" THEN  -- OBTIENE PRODUCTOS
+    SELECT id, nombre, descripcion, precio, tipo
+		FROM productos_servicios;
   END IF;
   
   IF pOperacion = "LU" THEN  -- LOGIN USUARIOS
