@@ -5,7 +5,7 @@ services:
     container_name: frontend
     ports:
       - '8080:8080'
-    network_mode: "host"
+    network_mode: "bridge"
   backend-obtiene-productos:
     build: ./Servicios/ObtieneProductos/
     container_name: obtieneProductos
@@ -35,4 +35,4 @@ services:
       - SQLDATABASE
     stdin_open: true
     tty: true
-    network_mode: "host"
+    network_mode: "bridge"
