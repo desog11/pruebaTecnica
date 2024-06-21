@@ -8,7 +8,7 @@ services:
     depends_on:
       - 'backend-obtiene-productos'
       - 'backend-inserta-suarios'
-    network_mode: 'bridge'
+    network_mode: 'host'
   backend-obtiene-productos:
     build: ./Servicios/ObtieneProductos/
     container_name: obtieneProductos
@@ -23,7 +23,7 @@ services:
       - SQLDATABASE
     stdin_open: true
     tty: true
-    network_mode: 'bridge'
+    network_mode: 'host'
   backend-inserta-suarios:
     build: ./Servicios/InsertaUsuarios/
     container_name: insertaUsuarios
@@ -38,4 +38,4 @@ services:
       - SQLDATABASE
     stdin_open: true
     tty: true
-    network_mode: 'bridge'
+    network_mode: 'host'
