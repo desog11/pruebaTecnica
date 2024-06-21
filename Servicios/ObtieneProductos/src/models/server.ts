@@ -29,7 +29,7 @@ class Server {
     }
 
     routes(){
-        this.app.use(cors())
+        this.app.use(cors({origin: '*'}))
         this.app.use('/api/productos',router)
     }
 
