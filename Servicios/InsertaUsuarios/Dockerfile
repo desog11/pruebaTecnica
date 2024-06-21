@@ -1,5 +1,5 @@
 FROM node:20.14.0-alpine
-WORKDIR /usr/src/app
+WORKDIR /src
 
 COPY package*.json ./
 COPY tsconfig.json ./
