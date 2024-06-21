@@ -20,7 +20,7 @@ services:
       - SQLDATABASE
     stdin_open: true
     tty: true
-    network_mode: "host"
+    network_mode: "bridge"
   backend-inserta-suarios:
     build: ./Servicios/InsertaUsuarios/
     container_name: insertaUsuarios
