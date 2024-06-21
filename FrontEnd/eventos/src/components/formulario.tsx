@@ -29,7 +29,8 @@ const clearForm = () => {
 
     const config: AxiosRequestConfig = {
         headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         } as RawAxiosRequestHeaders
     };
     if(verificaDatos()){
