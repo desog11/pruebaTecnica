@@ -1,16 +1,25 @@
-FROM node:20.14.0-alpine
-WORKDIR /usr/src/app
+#Build stage
+FROM node:20.14.0-alpine AS build
 
+WORKDIR /app
 
-COPY package.json /usr/src/app/
-RUN npm install\
-&& npm install typescript -g
+COPY package*.json .
 
-RUN tsc
+RUN npm install
+
 COPY . .
 
+RUN npm run build
 
+#Production stage
+FROM node:20.14.0-alpine AS production
 
+WORKDIR /app
 
-EXPOSE 3004
+COPY package*.json .
+
+RUN npm ci --only=production
+
+COPY --from=build /app/dist ./dist
+
 CMD ["node", "dist/index.js"]
